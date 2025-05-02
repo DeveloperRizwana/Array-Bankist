@@ -103,6 +103,7 @@ console.log(arr2);
 // CONCAT — Non-Destructive (Does NOT modify original array)
 const letters = arr.concat(arr2);
 console.log(letters);
+
 console.log([...arr, ...arr2]);
 
 // JOIN — Non-Destructive (Does NOT modify original array)
