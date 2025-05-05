@@ -108,3 +108,17 @@ console.log([...arr, ...arr2]);
 
 // JOIN — Non-Destructive (Does NOT modify original array)
 console.log(letters.join(' - '));
+
+const ar = [22, 11, 13];
+console.log(ar[0]);
+console.log(ar.at(0));
+console.log(ar.at(1));
+
+// getting last array element
+console.log(ar[ar.length - 1]);
+console.log(ar.slice(-1)[0]);
+console.log(ar.at(-1));
+
+console.log('Rizwana'.at(-1));
+console.log('Rizwana'.at(0));
+console.log('Rizwana'.at(1));
