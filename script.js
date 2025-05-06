@@ -61,6 +61,27 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = ''; //It clears all the inner HTML content of the containerMovements element — removing all child elements or text that were previously inside it.
+  //  .textContent = 0
+
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+        <div class="movements__value">${mov}</div>
+      </div>
+    `;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html); // afterbegin ->starting ke turant baad ,,,,,, Is line se har naye transaction ko containerMovements ke andar sabse upar (top) add kiya jaata hai
+  });
+};
+displayMovements(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
