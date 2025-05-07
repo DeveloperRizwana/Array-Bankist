@@ -80,6 +80,7 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html); // afterbegin ->starting ke turant baad ,,,,,, Is line se har naye transaction ko containerMovements ke andar sabse upar (top) add kiya jaata hai
   });
 };
+
 displayMovements(account1.movements);
 
 /////////////////////////////////////////////////
