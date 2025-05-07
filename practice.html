@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice</title>
+  </head>
+  <body>
+    <div class="prc">I am a Div</div>
+    <style>
+      .prc {
+        height: 500px;
+        width: 800px;
+        background-color: blueviolet;
+        border: 0.9rem ridge purple;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: wheat;
+      }
+    </style>
+    <script>
+      const selector = document.querySelector('.prc');
+      
+      document.body.addEventListener('click', function () {
+        selector.innerHTML = `<h1>Hii!!</h1>`;
+      });
+    </script>
+  </body>
+</html>
