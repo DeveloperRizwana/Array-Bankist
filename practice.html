@@ -22,10 +22,41 @@
     </style>
     <script>
       const selector = document.querySelector('.prc');
-      
+
       document.body.addEventListener('click', function () {
         selector.innerHTML = `<h1>Hii!!</h1>`;
       });
+
+      const accounts = [
+        { owner: 'Aman Sharma', movements: [200, 300, -100], pin: 1111 },
+        { owner: 'Neha Verma', movements: [500, -150, 340], pin: 2222 },
+        { owner: 'Raj Kumar', movements: [150, -50, 200], pin: 3333 },
+      ];
+
+      const createUserName = function (accs) {
+        accs.forEach(function (acc) {
+          acc.userName = acc.owner
+            .toLowerCase()
+            .split(' ')
+            .map(name => name[0])
+            .join('');
+        });
+      };
+      createUserName(accounts);
+
+      const login = function (inputUserName, inputPin) {
+        const account = accounts.find(
+          acc => acc.userName === inputUserName && acc.pin === inputPin
+        );
+        if (account) {
+          alert(`✅ Welcome back, ${account.owner.split(' ')[0]}!`);
+        } else {
+          // console.log('❌ Login failed! Username or PIN is incorrect.');
+          alert('❌ Login failed! Username or PIN is incorrect.');
+        }
+      };
+
+      login('as', 1111);
     </script>
   </body>
 </html>
