@@ -83,10 +83,16 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((accu, mov) => accu + mov, 0);
+  labelBalance.textContent = `${balance} €`;
+};
+calcDisplayBalance(account1.movements);
+
 const createUserName = function (accs) {
   accs.forEach(function (acc) {
     //Isse har account object mein ek userName property add ho jaayegi, jisme owner ke naam ke initials honge
-    acc.userName = acc.owner 
+    acc.userName = acc.owner
       .toLowerCase()
       .split(' ')
       .map(name => name[0])
