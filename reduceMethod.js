@@ -13,6 +13,7 @@ const balance = movements.reduce((accu, curr, i) => {
   console.log(`Iteration ${i}: ${accu}`);
   return accu + curr;
 }, 0);
+
 console.log(balance);
 
 let balance2 = 0;
