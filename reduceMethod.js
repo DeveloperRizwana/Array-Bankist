@@ -32,6 +32,7 @@ console.log(balance2);
 const max = movements.reduce((accu, cur) => {
   if (accu > cur) return accu;
   else return cur;
+  
 }, movements[0]);
 
 console.log(max);
