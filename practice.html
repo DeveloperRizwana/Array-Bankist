@@ -44,19 +44,95 @@
       };
       createUserName(accounts);
 
-      const login = function (inputUserName, inputPin) {
-        const account = accounts.find(
-          acc => acc.userName === inputUserName && acc.pin === inputPin
-        );
-        if (account) {
-          alert(`✅ Welcome back, ${account.owner.split(' ')[0]}!`);
-        } else {
-          // console.log('❌ Login failed! Username or PIN is incorrect.');
-          alert('❌ Login failed! Username or PIN is incorrect.');
-        }
-      };
+      // const login = function (inputUserName, inputPin) {
+      //   const account = accounts.find(
+      //     acc => acc.userName === inputUserName && acc.pin === inputPin
+      //   );
+      //   if (account) {
+      //     alert(`✅ Welcome back, ${account.owner.split(' ')[0]}!`);
+      //   } else {
+      //     // console.log('❌ Login failed! Username or PIN is incorrect.');
+      //     alert('❌ Login failed! Username or PIN is incorrect.');
+      //   }
+      // };
+      // login('as', 1111);
 
-      login('as', 1111);
+      // find and chaining method
+      // 1---Find first even number:
+      const numbers = [1, 3, 7, 4, 9, 12];
+      // const firstEvenNumber = numbers.find(function (cur) {
+      //   if (cur % 2 === 0) {
+      //     return cur;
+      //   }
+      // });
+
+      const firstEvenNumber = numbers.find(cur => cur % 2 === 0);
+      console.log(firstEvenNumber);
+
+      //2--- Find the first student with marks greater than 90
+      const students = [
+        { name: 'Amit', marks: 85 },
+        { name: 'Priya', marks: 92 },
+        { name: 'Raj', marks: 88 },
+      ];
+
+      const firstStudent = students.find(cur => cur.marks > 90);
+      console.log(firstStudent);
+
+      //3--- Find the product with id 102
+      const products = [
+        { id: 101, name: 'Phone' },
+        { id: 102, name: 'Laptop' },
+        { id: 103, name: 'Tablet' },
+      ];
+
+      const pr = products.find(cur => cur.id === 102);
+      console.log(pr);
+
+      // Method Chaining Practice Problems (filter → map → find)
+      //4-- Find the name of the first student who passed (marks > 50) and is older than 18:
+      const students2 = [
+        { name: 'Anu', age: 17, marks: 70 },
+        { name: 'Ravi', age: 19, marks: 45 },
+        { name: 'Sneha', age: 20, marks: 88 },
+      ];
+      // First filter students who passed and are older than 18
+      // Then find the first such student
+
+      const result1 = students2.filter(
+        cur => cur.marks > 50 && cur.age > 18
+      )[0];
+      const result = students2.find(cur => cur.marks > 50 && cur.age > 18);
+      console.log(result);
+      console.log(result1);
+
+      //5--- Chain filter and find/map to get the name of product over ₹1000
+      const items = [
+        { name: 'Pen', price: 50 },
+        { name: 'Bag', price: 1200 },
+        { name: 'Notebook', price: 80 },
+      ];
+
+      const nmOfProduct = items
+        .filter(cur => cur.price > 1000)
+        .map(cur => cur.name);
+      console.log(nmOfProduct);
+
+      // 6--- Find the first employee from filtered list whose salary > 30,000 and department is "IT":
+      const employees = [
+        { name: 'Kiran', dept: 'HR', salary: 32000 },
+        { name: 'Ajay', dept: 'IT', salary: 28000 },
+        { name: 'Seema', dept: 'IT', salary: 35000 },
+      ];
+      // Filter dept === "IT", then find salary > 30000
+      const firstEmployee1 = employees.filter(
+        cur => cur.dept === 'IT' && cur.salary > 30000
+      )[0];
+      const firstEmployee2 = employees.find(
+        cur => cur.dept === 'IT' && cur.salary > 30000
+      );
+      console.log(firstEmployee1);
+      console.log(firstEmployee2);
     </script>
   </body>
 </html>
