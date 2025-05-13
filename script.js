@@ -104,7 +104,7 @@ const calcDisplaySummary = function (movements) {
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
     .filter((int, i, arr) => {
-      console.log(arr);
+      // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, interest) => acc + interest, 0);
@@ -123,7 +123,18 @@ const createUserName = function (accs) {
   });
 };
 createUserName(accounts);
-console.log(accounts);
+
+// Event Handler
+let currentAccount;
+btnLogin.addEventListener('click', function (e) {
+  // Prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.userName === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
