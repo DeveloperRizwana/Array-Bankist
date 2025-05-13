@@ -81,13 +81,11 @@ const displayMovements = function (movements) {
   });
 };
 
-displayMovements(account1.movements);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((accu, mov) => accu + mov, 0);
   labelBalance.textContent = `${balance}€`;
 };
-calcDisplayBalance(account1.movements);
 
 const calcDisplaySummary = function (movements) {
   const incomes = movements
@@ -110,7 +108,6 @@ const calcDisplaySummary = function (movements) {
     .reduce((acc, interest) => acc + interest, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
-calcDisplaySummary(account1.movements);
 
 const createUserName = function (accs) {
   accs.forEach(function (acc) {
@@ -137,8 +134,21 @@ btnLogin.addEventListener('click', function (e) {
 
   // if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    console.log('LIGIN');
+    // Display UI and welcome message
+    labelWelcome.textContent = `👋 Welcome Back, ${
+      currentAccount.owner.split(' ')[0]
+    } 😊`;
+    containerApp.style.opacity = 1;
   }
+
+  // Display Movements
+  displayMovements(currentAccount.movements);
+
+  // Display Balance
+  calcDisplayBalance(currentAccount.movements);
+
+  // Display Summary
+  calcDisplaySummary(currentAccount.movements);
 });
 
 /////////////////////////////////////////////////
