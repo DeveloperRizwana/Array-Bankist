@@ -134,6 +134,11 @@ btnLogin.addEventListener('click', function (e) {
     acc => acc.userName === inputLoginUsername.value
   );
   console.log(currentAccount);
+
+  // if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    console.log('LIGIN');
+  }
 });
 
 /////////////////////////////////////////////////
