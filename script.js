@@ -73,7 +73,7 @@ const displayMovements = function (movements) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}€</div>
+        <div class="movements__value">${mov}₹</div>
       </div>
     `;
 
@@ -83,19 +83,19 @@ const displayMovements = function (movements) {
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((accu, mov) => accu + mov, 0);
-  labelBalance.textContent = `${balance}€`;
+  labelBalance.textContent = `${balance}₹`;
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
+  labelSumIn.textContent = `${incomes}₹`;
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+  labelSumOut.textContent = `${Math.abs(out)}₹`;
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -105,7 +105,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, interest) => acc + interest, 0);
-  labelSumInterest.textContent = `${interest}€`;
+  labelSumInterest.textContent = `${interest}₹`;
 };
 
 const createUserName = function (accs) {
@@ -152,6 +152,15 @@ btnLogin.addEventListener('click', function (e) {
     // Display Summary
     calcDisplaySummary(currentAccount);
   }
+});
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.userName === inputTransferTo.value
+  );
+  console.log(amount, receiverAcc);
 });
 
 /////////////////////////////////////////////////
