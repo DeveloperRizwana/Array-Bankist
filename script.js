@@ -73,7 +73,9 @@ const displayMovements = function (movements) {
         <div class="movements__type movements__type--${type}">${
       i + 1
     } ${type}</div>
-        <div class="movements__value">${mov}₹</div>
+        <div class="movements__value">${mov > 0 ? '+' : '-'}₹${Math.abs(
+      mov
+    )}</div>
       </div>
     `;
 
@@ -81,21 +83,21 @@ const displayMovements = function (movements) {
   });
 };
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((accu, mov) => accu + mov, 0);
-  labelBalance.textContent = `${balance}₹`;
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((accu, mov) => accu + mov, 0);
+  labelBalance.textContent = `₹${acc.balance}`;
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}₹`;
+  labelSumIn.textContent = `₹${incomes}`;
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}₹`;
+  labelSumOut.textContent = `₹${Math.abs(out)}`;
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -105,7 +107,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, interest) => acc + interest, 0);
-  labelSumInterest.textContent = `${interest}₹`;
+  labelSumInterest.textContent = `₹${interest}`;
 };
 
 const createUserName = function (accs) {
@@ -119,6 +121,17 @@ const createUserName = function (accs) {
   });
 };
 createUserName(accounts);
+
+const updateUI = function (acc) {
+  // Display Movements
+  displayMovements(acc.movements);
+
+  // Display Balance
+  calcDisplayBalance(acc);
+
+  // Display Summary
+  calcDisplaySummary(acc);
+};
 
 // Event Handler
 let currentAccount;
@@ -143,14 +156,8 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
-    // Display Movements
-    displayMovements(currentAccount.movements);
-
-    // Display Balance
-    calcDisplayBalance(currentAccount.movements);
-
-    // Display Summary
-    calcDisplaySummary(currentAccount);
+    // Update UI
+    updateUI(currentAccount);
   }
 });
 
@@ -161,6 +168,20 @@ btnTransfer.addEventListener('click', function (e) {
     acc => acc.userName === inputTransferTo.value
   );
   console.log(amount, receiverAcc);
+
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.userName !== currentAccount.userName
+  ) {
+    // Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
 });
 
 /////////////////////////////////////////////////
