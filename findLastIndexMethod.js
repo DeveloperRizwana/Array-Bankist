@@ -1,6 +1,6 @@
 'use strict';
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -120, 70, 1300];
 
 // FindLast method
 const lastWithdrawal = movements.findLast(mov => mov < 0);
