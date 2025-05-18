@@ -37,7 +37,7 @@
   
   .logo {
     height: 5.25rem;
-    filter: brightness(0.9) contrast(1.2); /* Adjust logo for dark theme */
+    filter: brightness(0.9) contrast(0.4); /* Adjust logo for dark theme */
   }
   
   .login {
