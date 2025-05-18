@@ -25,4 +25,14 @@ console.log(y);
 const z = Array.from({ length: 7 }, (_, i) => i + 1);
 console.log(z);
 
+// Non-destructive alternatives : toReversed, toSorted, toSplice, with
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements);
+const reversedMov = movements.toReversed();
+console.log(reversedMov);
+
+// movements[1] = 2000;
+const newMov = movements.with(1, 2000);
+console.log(newMov);
+console.log(movements);
