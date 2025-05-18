@@ -133,6 +133,21 @@
       );
       console.log(firstEmployee1);
       console.log(firstEmployee2);
+
+      // Array Grouping based on real-world use cases.
+      const student = [
+        { name: 'Aman', grade: 'A' },
+        { name: 'Neha', grade: 'B' },
+        { name: 'Raj', grade: 'A' },
+        { name: 'Simran', grade: 'C' },
+        { name: 'Tina', grade: 'B' },
+      ];
+
+      const sortedStudent = student.sort();
+      console.log(sortedStudent.sort());
+      
+      const groupByGrade = Object.groupBy(student, ({ grade }) => grade);
+      console.log(groupByGrade);
     </script>
   </body>
 </html>

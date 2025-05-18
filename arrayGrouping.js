@@ -54,5 +54,5 @@ const groupdByActivity = Object.groupBy(accounts, account => {
 console.log(groupdByActivity);
 
 // const groupdAccounts = Object.groupBy(accounts, account => account.type);
-const groupdAccounts = Object.groupBy(accounts, ({ type }) => type);
+const  groupdAccounts = Object.groupBy(accounts, ({ type }) => type);
 console.log(groupdAccounts);
