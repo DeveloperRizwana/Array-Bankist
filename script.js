@@ -72,7 +72,7 @@ const displayMovements = function (movements, sort = false) {
     } ${type}</div>
         <div class="movements__value">${mov > 0 ? '+' : '-'}₹${Math.abs(
       mov
-    )}</div>
+    ).toFixed(2)}</div>
       </div>
     `;
 
@@ -82,19 +82,19 @@ const displayMovements = function (movements, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((accu, mov) => accu + mov, 0);
-  labelBalance.textContent = `₹${acc.balance}`;
+  labelBalance.textContent = `₹${acc.balance.toFixed(2)}`;
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `₹${incomes}`;
+  labelSumIn.textContent = `₹${incomes.toFixed(2)}`;
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `₹${Math.abs(out)}`;
+  labelSumOut.textContent = `₹${Math.abs(out).toFixed(2)}`;
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -104,7 +104,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, interest) => acc + interest, 0);
-  labelSumInterest.textContent = `₹${interest}`;
+  labelSumInterest.textContent = `₹${interest.toFixed(2)}`;
 };
 
 const createUserName = function (accs) {
@@ -185,7 +185,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const amount = Number(inputLoanAmount.value);
+  const amount = Math.floor(inputLoanAmount.value);
 
   // If the amount is greater than 0 and there is at least one movement in the current account's movements that is greater than or equal to 10% of the amount
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
