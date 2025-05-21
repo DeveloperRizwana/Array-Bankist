@@ -28,3 +28,12 @@ console.log(Date.now());
 
 future.setFullYear(2040);
 console.log(future);
+
+const future2 = new Date(2035, 10, 12, 15, 13);
+console.log(+future);
+
+const calcDaysPassed = (date1, date2) =>
+  Math.abs(date1 - date2) / (1000 * 60 * 60 * 24);
+
+const day1 = calcDaysPassed(new Date(2025, 10, 12), new Date(2025, 10, 22));
+console.log(day1);
