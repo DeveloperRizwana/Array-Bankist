@@ -6,148 +6,62 @@
     <title>Practice</title>
   </head>
   <body>
-    <div class="prc">I am a Div</div>
+    <div class="container">
+      <div class="prc">
+        <div class="time"></div>
+        <div id="date" style="font-size: 1.5rem"></div>
+      </div>
+    </div>
     <style>
-      .prc {
-        height: 500px;
-        width: 800px;
-        background-color: blueviolet;
-        border: 0.9rem ridge purple;
-        font-size: 2rem;
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+      body {
+        background-color: rgb(161, 63, 251);
+        font-family: 'Poppins', sans-serif;
+      }
+      .container {
         display: flex;
         justify-content: center;
         align-items: center;
-        color: wheat;
+        height: 100vh;
+      }
+      .prc {
+        height: 400px;
+        width: 700px;
+        background-color: blueviolet;
+        border: 0.9rem ridge purple;
+        font-size: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+        align-items: center;
+        color: rgb(241, 173, 241);
+        border-radius: 3rem;
+      }
+      #date {
+        font-size: 1.2rem;
+        margin-top: 0.4rem;
+        font-weight: 300;
+        letter-spacing: 1px;
       }
     </style>
     <script>
-      const selector = document.querySelector('.prc');
-
-      document.body.addEventListener('click', function () {
-        selector.innerHTML = `<h1>Hii!!</h1>`;
-      });
-
-      const accounts = [
-        { owner: 'Aman Sharma', movements: [200, 300, -100], pin: 1111 },
-        { owner: 'Neha Verma', movements: [500, -150, 340], pin: 2222 },
-        { owner: 'Raj Kumar', movements: [150, -50, 200], pin: 3333 },
-      ];
-
-      const createUserName = function (accs) {
-        accs.forEach(function (acc) {
-          acc.userName = acc.owner
-            .toLowerCase()
-            .split(' ')
-            .map(name => name[0])
-            .join('');
-        });
-      };
-      createUserName(accounts);
-
-      // const login = function (inputUserName, inputPin) {
-      //   const account = accounts.find(
-      //     acc => acc.userName === inputUserName && acc.pin === inputPin
-      //   );
-      //   if (account) {
-      //     alert(`✅ Welcome back, ${account.owner.split(' ')[0]}!`);
-      //   } else {
-      //     // console.log('❌ Login failed! Username or PIN is incorrect.');
-      //     alert('❌ Login failed! Username or PIN is incorrect.');
-      //   }
-      // };
-      // login('as', 1111);
-
-      // find and chaining method
-      // 1---Find first even number:
-      const numbers = [1, 3, 7, 4, 9, 12];
-      // const firstEvenNumber = numbers.find(function (cur) {
-      //   if (cur % 2 === 0) {
-      //     return cur;
-      //   }
-      // });
-
-      const firstEvenNumber = numbers.find(cur => cur % 2 === 0);
-      console.log(firstEvenNumber);
-
-      //2--- Find the first student with marks greater than 90
-      const students = [
-        { name: 'Amit', marks: 85 },
-        { name: 'Priya', marks: 92 },
-        { name: 'Raj', marks: 88 },
-      ];
-
-      const firstStudent = students.find(cur => cur.marks > 90);
-      console.log(firstStudent);
-
-      //3--- Find the product with id 102
-      const products = [
-        { id: 101, name: 'Phone' },
-        { id: 102, name: 'Laptop' },
-        { id: 103, name: 'Tablet' },
-      ];
-
-      const pr = products.find(cur => cur.id === 102);
-      console.log(pr);
-
-      // Method Chaining Practice Problems (filter → map → find)
-      //4-- Find the name of the first student who passed (marks > 50) and is older than 18:
-      const students2 = [
-        { name: 'Anu', age: 17, marks: 70 },
-        { name: 'Ravi', age: 19, marks: 45 },
-        { name: 'Sneha', age: 20, marks: 88 },
-      ];
-      // First filter students who passed and are older than 18
-      // Then find the first such student
-
-      const result1 = students2.filter(
-        cur => cur.marks > 50 && cur.age > 18
-      )[0];
-      const result = students2.find(cur => cur.marks > 50 && cur.age > 18);
-      console.log(result);
-      console.log(result1);
-
-      //5--- Chain filter and find/map to get the name of product over ₹1000
-      const items = [
-        { name: 'Pen', price: 50 },
-        { name: 'Bag', price: 1200 },
-        { name: 'Notebook', price: 80 },
-      ];
-
-      const nmOfProduct = items
-        .filter(cur => cur.price > 1000)
-        .map(cur => cur.name);
-      console.log(nmOfProduct);
-
-      // 6--- Find the first employee from filtered list whose salary > 30,000 and department is "IT":
-      const employees = [
-        { name: 'Kiran', dept: 'HR', salary: 32000 },
-        { name: 'Ajay', dept: 'IT', salary: 28000 },
-        { name: 'Seema', dept: 'IT', salary: 35000 },
-      ];
-      // Filter dept === "IT", then find salary > 30000
-      const firstEmployee1 = employees.filter(
-        cur => cur.dept === 'IT' && cur.salary > 30000
-      )[0];
-      const firstEmployee2 = employees.find(
-        cur => cur.dept === 'IT' && cur.salary > 30000
-      );
-      console.log(firstEmployee1);
-      console.log(firstEmployee2);
-
-      // Array Grouping based on real-world use cases.
-      const student = [
-        { name: 'Aman', grade: 'A' },
-        { name: 'Neha', grade: 'B' },
-        { name: 'Raj', grade: 'A' },
-        { name: 'Simran', grade: 'C' },
-        { name: 'Tina', grade: 'B' },
-      ];
-
-      const sortedStudent = student.sort();
-      console.log(sortedStudent.sort());
-      
-      const groupByGrade = Object.groupBy(student, ({ grade }) => grade);
-      console.log(groupByGrade);
+      function timer() {
+        const time = document.querySelector('.time');
+        const now = new Date();
+        const options = {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+        };
+        time.textContent = new Intl.DateTimeFormat('en-IN', options).format(
+          now
+        );
+        document.getElementById('date').textContent = now.toDateString(); // e.g., Thu May 23 2025
+      }
+      timer();
+      setInterval(timer, 1000);
     </script>
   </body>
 </html>

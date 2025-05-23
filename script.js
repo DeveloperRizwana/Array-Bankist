@@ -309,16 +309,17 @@ btnLoan.addEventListener('click', function (e) {
 
   // If the amount is greater than 0 and there is at least one movement in the current account's movements that is greater than or equal to 10% of the amount
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // ADD MOVEMENT
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      // ADD MOVEMENT
+      currentAccount.movements.push(amount);
 
-    // Add Loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add Loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    //UPDATE UI
-    updateUI(currentAccount);
+      //UPDATE UI
+      updateUI(currentAccount);
+    }, 2500);
   }
-
   inputLoanAmount.value = '';
 });
 

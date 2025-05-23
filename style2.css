@@ -3,330 +3,350 @@
  * Enjoy the sleek new look! 😁
  */
 
- * {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-  }
-  
-  html {
-    font-size: 62.5%;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Poppins", sans-serif;
-    color: #e0e0e0;
-    background-color: #0f172a; /* Dark blue background */
-    height: 100vh;
-    padding: 2rem;
-  }
-  
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-  }
-  
-  .welcome {
-    font-size: 1.9rem;
-    font-weight: 500;
-    color: #f0f9ff; /* Lighter text for better contrast */
-  }
-  
-  .logo {
-    height: 5.25rem;
-    filter: brightness(0.9) contrast(0.4); /* Adjust logo for dark theme */
-  }
-  
-  .login {
-    display: flex;
-  }
-  
-  .login__input {
-    border: none;
-    padding: 0.5rem 2rem;
-    font-size: 1.6rem;
-    font-family: inherit;
-    text-align: center;
-    width: 12rem;
-    border-radius: 10rem;
-    margin-right: 1rem;
-    color: #e0e0e0;
-    background-color: #1e293b; /* Darker input background */
-    border: 1px solid #334155;
-    transition: all 0.3s;
-  }
-  
-  .login__input:focus {
-    outline: none;
-    border: 1px solid #64748b;
-    background-color: #1e293b;
-  }
-  
-  .login__input::placeholder {
-    color: #64748b;
-  }
-  
-  .login__btn {
-    border: none;
-    background: none;
-    font-size: 2.2rem;
-    color: #94a3b8;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  
-  .login__btn:hover,
-  .login__btn:focus,
-  .btn--sort:hover,
-  .btn--sort:focus {
-    outline: none;
-    color: #cbd5e1;
-  }
-  
-  /* MAIN */
-  .app {
-    position: relative;
-    max-width: 100rem;
-    margin: 4rem auto;
-    display: grid;
-    grid-template-columns: 4fr 3fr;
-    grid-template-rows: auto repeat(3, 15rem) auto;
-    gap: 2rem;
-  
-    /* NOTE This creates the fade in/out animation */
-    opacity: 0;
-    transition: all 1s;
-  }
-  
-  .balance {
-    grid-column: 1 / span 2;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-  }
-  
-  .balance__label {
-    font-size: 2.2rem;
-    font-weight: 500;
-    margin-bottom: -0.2rem;
-    color: #f0f9ff;
-  }
-  
-  .balance__date {
-    font-size: 1.4rem;
-    color: #94a3b8;
-  }
-  
-  .balance__value {
-    font-size: 4.5rem;
-    font-weight: 400;
-    color: #f0f9ff;
-  }
-  
-  /* MOVEMENTS */
-  .movements {
-    grid-row: 2 / span 3;
-    background-color: #1e293b; /* Dark blue card background */
-    border-radius: 1rem;
-    overflow: scroll;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  .movements__row {
-    padding: 2.25rem 4rem;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #334155;
-  }
-  
-  .movements__type {
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: #fff;
-    padding: 0.1rem 1rem;
-    border-radius: 10rem;
-    margin-right: 2rem;
-  }
-  
-  .movements__date {
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: #94a3b8;
-  }
-  
-  .movements__type--deposit {
-    background-image: linear-gradient(to top left, #0ea5e9, #38bdf8); /* Blue gradient for deposits */
-  }
-  
-  .movements__type--withdrawal {
-    background-image: linear-gradient(to top left, #dc2626, #ef4444); /* Red gradient for withdrawals */
-  }
-  
-  .movements__value {
-    font-size: 1.7rem;
-    margin-left: auto;
-    color: #f0f9ff;
-  }
-  
-  /* SUMMARY */
-  .summary {
-    grid-row: 5 / 6;
-    display: flex;
-    align-items: baseline;
-    padding: 0 0.3rem;
-    margin-top: 1rem;
-  }
-  
-  .summary__label {
-    font-size: 1.2rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    margin-right: 0.8rem;
-    color: #94a3b8;
-  }
-  
-  .summary__value {
-    font-size: 2.2rem;
-    margin-right: 2.5rem;
-    color: #f0f9ff;
-  }
-  
-  .summary__value--in,
-  .summary__value--interest {
-    color: #0ea5e9; /* Blue for deposits/interest */
-  }
-  
-  .summary__value--out {
-    color: #ef4444; /* Red for withdrawals */
-  }
-  
-  .btn--sort {
-    margin-left: auto;
-    border: none;
-    background: none;
-    font-size: 1.3rem;
-    font-weight: 500;
-    cursor: pointer;
-    color: #94a3b8;
-  }
-  
-  /* OPERATIONS */
-  .operation {
-    border-radius: 1rem;
-    padding: 3rem 4rem;
-    color: #f0f9ff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  .operation--transfer {
-    background-image: linear-gradient(to top left, #1e40af, #3b82f6); /* Blue gradient for transfer */
-  }
-  
-  .operation--loan {
-    background-image: linear-gradient(to top left, #0e7490, #06b6d4); /* Teal gradient for loan */
-  }
-  
-  .operation--close {
-    background-image: linear-gradient(to top left, #7f1d1d, #b91c1c); /* Red gradient for close */
-  }
-  
-  h2 {
-    margin-bottom: 1.5rem;
-    font-size: 1.7rem;
-    font-weight: 600;
-    color: #f0f9ff;
-  }
-  
-  .form {
-    display: grid;
-    grid-template-columns: 2.5fr 2.5fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 0.4rem 1rem;
-  }
-  
-  /* Exceptions for interest */
-  .form.form--loan {
-    grid-template-columns: 2.5fr 1fr 2.5fr;
-  }
-  .form__label--loan {
-    grid-row: 2;
-  }
-  /* End exceptions */
-  
-  .form__input {
-    width: 100%;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.15);
-    font-family: inherit;
-    font-size: 1.5rem;
-    text-align: center;
-    color: #f0f9ff;
-    padding: 0.3rem 1rem;
-    border-radius: 0.7rem;
-    transition: all 0.3s;
-  }
-  
-  .form__input:focus {
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.25);
-  }
-  
-  .form__label {
-    font-size: 1.3rem;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
-  .form__btn {
-    border: none;
-    border-radius: 0.7rem;
-    font-size: 1.8rem;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #f0f9ff;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  
-  .form__btn:focus,
-  .form__btn:hover {
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-  
-  .logout-timer {
-    padding: 0 0.3rem;
-    margin-top: 1.9rem;
-    text-align: right;
-    font-size: 1.25rem;
-    color: #94a3b8;
-  }
-  
-  .timer {
-    font-weight: 600;
-    color: #f0f9ff;
-  }
-  
-  /* Custom scrollbar for dark theme */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #1e293b;
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #475569;
-    border-radius: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #64748b;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #e0e0e0;
+  background-color: #0f172a; /* Dark blue background */
+  height: 100vh;
+  padding: 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.welcome {
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: #f0f9ff; /* Lighter text for better contrast */
+}
+
+.logo {
+  height: 5.25rem;
+  filter: brightness(0.9) contrast(0.4); /* Adjust logo for dark theme */
+}
+
+.login {
+  display: flex;
+}
+
+.login__input {
+  border: none;
+  padding: 0.5rem 2rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+  text-align: center;
+  width: 12rem;
+  border-radius: 10rem;
+  margin-right: 1rem;
+  color: #e0e0e0;
+  background-color: #1e293b; /* Darker input background */
+  border: 1px solid #334155;
+  transition: all 0.3s;
+}
+
+.login__input:focus {
+  outline: none;
+  border: 1px solid #64748b;
+  background-color: #1e293b;
+}
+
+.login__input::placeholder {
+  color: #64748b;
+}
+
+.login__btn {
+  border: none;
+  background: none;
+  font-size: 2.2rem;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.login__btn:hover,
+.login__btn:focus,
+.btn--sort:hover,
+.btn--sort:focus {
+  outline: none;
+  color: #cbd5e1;
+}
+
+/* MAIN */
+.app {
+  position: relative;
+  max-width: 100rem;
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  grid-template-rows: auto repeat(3, 15rem) auto;
+  gap: 2rem;
+
+  /* NOTE This creates the fade in/out animation */
+  opacity: 0;
+  transition: all 1s;
+}
+
+.balance {
+  grid-column: 1 / span 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.balance__label {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: -0.2rem;
+  color: #f0f9ff;
+}
+
+.balance__date {
+  font-size: 1.4rem;
+  color: #94a3b8;
+}
+
+.balance__value {
+  font-size: 4.5rem;
+  font-weight: 400;
+  color: #f0f9ff;
+}
+
+/* MOVEMENTS */
+.movements {
+  grid-row: 2 / span 3;
+  background-color: #1e293b; /* Dark blue card background */
+  border-radius: 1rem;
+  overflow: scroll;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.movements__row {
+  padding: 2.25rem 4rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #334155;
+}
+
+.movements__type {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.1rem 1rem;
+  border-radius: 10rem;
+  margin-right: 2rem;
+}
+
+.movements__date {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+.movements__type--deposit {
+  background-image: linear-gradient(
+    to top left,
+    #0ea5e9,
+    #38bdf8
+  ); /* Blue gradient for deposits */
+}
+
+.movements__type--withdrawal {
+  background-image: linear-gradient(
+    to top left,
+    #dc2626,
+    #ef4444
+  ); /* Red gradient for withdrawals */
+}
+
+.movements__value {
+  font-size: 1.7rem;
+  margin-left: auto;
+  color: #f0f9ff;
+}
+
+/* SUMMARY */
+.summary {
+  grid-row: 5 / 6;
+  display: flex;
+  align-items: baseline;
+  padding: 0 0.3rem;
+  margin-top: 1rem;
+}
+
+.summary__label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-right: 0.8rem;
+  color: #94a3b8;
+}
+
+.summary__value {
+  font-size: 2.2rem;
+  margin-right: 2.5rem;
+  color: #f0f9ff;
+}
+
+.summary__value--in,
+.summary__value--interest {
+  color: #0ea5e9; /* Blue for deposits/interest */
+}
+
+.summary__value--out {
+  color: #ef4444; /* Red for withdrawals */
+}
+
+.btn--sort {
+  margin-left: auto;
+  border: none;
+  background: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #94a3b8;
+}
+
+/* OPERATIONS */
+.operation {
+  border-radius: 1rem;
+  padding: 3rem 4rem;
+  color: #f0f9ff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.operation--transfer {
+  background-image: linear-gradient(
+    to top left,
+    #1e40af,
+    #3b82f6
+  ); /* Blue gradient for transfer */
+}
+
+.operation--loan {
+  background-image: linear-gradient(
+    to top left,
+    #0e7490,
+    #06b6d4
+  ); /* Teal gradient for loan */
+}
+
+.operation--close {
+  background-image: linear-gradient(
+    to top left,
+    #7f1d1d,
+    #b91c1c
+  ); /* Red gradient for close */
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #f0f9ff;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 2.5fr 2.5fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.4rem 1rem;
+}
+
+/* Exceptions for interest */
+.form.form--loan {
+  grid-template-columns: 2.5fr 1fr 2.5fr;
+}
+.form__label--loan {
+  grid-row: 2;
+}
+/* End exceptions */
+
+.form__input {
+  width: 100%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  font-family: inherit;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #f0f9ff;
+  padding: 0.3rem 1rem;
+  border-radius: 0.7rem;
+  transition: all 0.3s;
+}
+
+.form__input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.form__label {
+  font-size: 1.3rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form__btn {
+  border: none;
+  border-radius: 0.7rem;
+  font-size: 1.8rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #f0f9ff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.form__btn:focus,
+.form__btn:hover {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.logout-timer {
+  padding: 0 0.3rem;
+  margin-top: 1.9rem;
+  text-align: right;
+  font-size: 1.25rem;
+  color: #94a3b8;
+}
+
+.timer {
+  font-weight: 600;
+  color: #f0f9ff;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
