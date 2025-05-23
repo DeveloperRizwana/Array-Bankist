@@ -176,7 +176,6 @@ const calcDisplaySummary = function (acc) {
     .filter(mov => mov > 0)
     .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
-      // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, interest) => acc + interest, 0);
